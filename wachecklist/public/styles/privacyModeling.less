@@ -1,0 +1,40 @@
+.privacy-modeling-wrapper {
+  text-align: center;
+  background: url("../images/PrivacyModelling-bg.png") center/cover no-repeat;
+  padding: 40px 0 41px;
+
+  @media screen and (min-width: 990px) {
+    padding: 50px 0 69px;
+  }
+
+  .privacy-modeling__text {
+    max-width: 890px;
+    margin: 0 auto 40px;
+    color: #ffffff;
+    .font(400; 20px; 30px; @font-nunito-base);
+  }
+
+  .privacy-modeling__link {
+    color: @colorDarkBlue;
+    .font(500; 16px; 1; @font-roboto-base);
+    box-shadow: 0 15px 20px -20px #000000;
+    border-radius: 4px;
+    background-color: #ffffff;
+    padding: 15px 0;
+    transition: .4s;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    max-width: 280px;
+    margin: 0 auto;
+    text-transform: uppercase;
+
+    &:hover {
+      background: @colorDarkBlue;
+      color: #fff;
+    }
+
+  }
+
+}

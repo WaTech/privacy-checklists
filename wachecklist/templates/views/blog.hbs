@@ -1,0 +1,137 @@
+{{!< default}}
+<div class="blog-page-container">
+
+    <div class="hero hero-blog">
+        <header class="header">
+            <div class="container header-container">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid container-header-new">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar icon-bar-1"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+                                <img src='/images/logo-header.png' alt=""/>
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <nav class="header__nav">
+                                <ul role="menu" class="header__nav-menu">
+                                    {{# each navLinks}}
+                                        <li role="menuitem" class="header__nav-menu--item">
+                                            <a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+                                                {{ label }}
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="hero-wrapper">
+            <div class="container hero-container">
+                <div class="hero__left-content">
+                    <h2 class="hero__title">
+                        Blog
+                    </h2>
+
+                    <form action="/search" class="hero__form-search">
+                        <label for="q" class="hero__form-label">
+                            <input autocomplete="off" required class="hero__form-input" name="q" id="q" type="search" placeholder="Search titles or categories" aria-label="Search">
+                        </label>
+                        <button class="hero__form-btn">
+                            SEARCH
+                        </button>
+                        <div class="search__results">
+                            <ul class="search__results--list autocomplete-items" tabindex="0"></ul>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog-wrapper blog-page">
+        <div class="container blog-container">
+            <div class="blog__entry-container">
+                <a href="#" class="link-categories">
+                    All categories
+                </a>
+                <div class="blog__entry-container-categories">
+                    Category:
+					<a href="/blog"
+						{{#ifeq category 'all' }}
+					   class="blog__entry-container-categories--link active"
+						{{else}}
+					   class="blog__entry-container-categories--link"
+						{{/ifeq}}
+					>
+						All
+					</a>
+                    {{# each data.categories path='blog'  }}
+                        <a href="{{categoryUrl key path='blog' }}"
+							{{#ifeq ../category key }}
+						   		class="blog__entry-container-categories--link active" 
+							{{else}} 
+						   		class="blog__entry-container-categories--link" 
+							{{/ifeq}}>
+                            {{name}}
+                        </a>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="posts-wrapper">
+                <div class='posts-container'>
+                    <div class="post__footer">
+                        <ul class="posts__footer--list">
+                            {{# each data.posts.results}}
+                                <li class="posts__footer--list-item number-{{@key}}">
+                                    <div class="posts__entry-container--image"
+                                        {{#if image.url}} style="background: url('{{image.url}}') no-repeat center/cover"{{/if}}>
+                                    </div>
+                                    <div class="posts__entry-container--text">
+                                        <h3 class="posts__title">
+                                            {{{ title }}}
+                                        </h3>
+                                        <span class="posts__item--filed-under">
+                                        Filed under: {{{ categoryList categories }}}
+                                    </span>
+										<p>{{ content.brief }}</p>
+                                        <div class="posts__item--entry-container">
+                                            <a href="{{ postUrl slug }}" class="posts__item--entry-container-link">
+                                                Learn more
+                                            </a>
+                                            <span class="posts__item--entry-container-icon">
+                                            <img class="posts__item--entry-container-icon-img" src='/images/post-icon.png' alt="" />
+                                                <span class="posts__date">
+                                                    {{ date format='MMMM DD, YYYY' }}
+                                                </span>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            {{#ifHasPagination data.posts}}
+                {{>pagination }}
+            {{/ifHasPagination}}
+        </div>
+    </div>
+
+    <!-- Extend section -->
+    {{#if page.sections.[0] }}
+        {{> section page.sections.[0] }}
+    {{/if}}
+</div>
+

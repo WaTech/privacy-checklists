@@ -1,0 +1,19 @@
+// Override Bootstrap variables in this file, e.g.
+
+@font-size-base: 14px;
+@font-nunito-base: 'Nunito', sans-serif;
+@font-roboto-base: 'Roboto', sans-serif;
+@colorDarkBlue: #216ce6;
+@colorBrightGreen: #5fb100;
+@colorGrey: #4a4a4a;
+@textColorSignalBlack: #282828;
+@colorLightGray: #9b9b9b;
+
+// Declare mixin
+
+.font(@fontWeight: normal; @fontSize: 14px; @lineHeight: inherit; @fontFamily: 'Nunito', sans-serif;) {
+  font-family: @fontFamily;
+  font-size: @fontSize;
+  font-weight: @fontWeight;
+  line-height: @lineHeight;
+}

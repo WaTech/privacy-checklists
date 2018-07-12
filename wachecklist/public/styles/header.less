@@ -1,0 +1,234 @@
+.header {
+  padding: 20px 0 0 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+
+  @media screen and (min-width: 768px) {
+    padding: 23px 0 0;
+  }
+
+
+  .header-container {
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      width: 750px;
+    }
+
+    @media screen and (min-width: 992px) {
+      width: 970px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 1170px;
+    }
+
+    .navbar-default {
+      background: none;
+      border: none;
+      margin-bottom: 0;
+
+      .navbar-toggle {
+        padding: 0 0;
+        margin: 0 0 0 92px;
+        background: none;
+        border: none;
+
+        &:hover {
+          background: none;
+
+        }
+
+        .icon-bar {
+          width: 28px;
+          height: 3px;
+          border-radius: 2px;
+          background: #ffffff;
+          margin-top: 8px;
+
+        }
+
+        .icon-bar-1 {
+          margin-top: 0;
+        }
+
+      }
+
+      .navbar-collapse {
+        padding: 0;
+      }
+
+      .header__logo{
+        padding: 0 0;
+        display: block;
+
+        img {
+          max-width: 140px;
+
+          @media screen and (min-width: 375px) {
+            max-width: 202px;
+          }
+
+          @media screen and (min-width: 768px) {
+            max-width: 100%;
+            width: 100%;
+          }
+
+        }
+
+      }
+
+    }
+    .navbar-right {
+      display: none;
+    }
+
+    // Mobile header
+
+    .header__logo {
+
+      a {
+        display: block;
+
+        img {
+          max-width: 100%;
+          width: 100%;
+          height: auto;
+          vertical-align: middle;
+        }
+
+      }
+
+    }
+
+    .header__nav {
+      padding-top: 18px;
+
+      @media screen and (min-width: 990px) {
+        padding-top: 8px;
+      }
+
+      &-menu {
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+        text-align: left;
+
+        @media screen and (min-width: 768px) {
+          display: flex;
+          justify-content: center;
+          margin-left: 137px;
+          text-align: center;
+        }
+
+        &--item {
+          padding: 0 0;
+          margin-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          @media screen and (min-width: 768px) {
+            padding: 0 30px;
+          }
+
+          &-link {
+            text-decoration: none ;
+            transition: .4s;
+            color: #ffffff;
+            .font(700; 20px; 1; @font-nunito-base);
+
+            &:hover {
+              color: #c7c7c7;
+            }
+
+          }
+
+          .active {
+            border-bottom: 2px solid #fff;
+          }
+
+        }
+
+      }
+
+    }
+
+    .container-header-new {
+
+      @media screen and (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        padding: 0 0;
+      }
+
+      .navbar-collapse {
+
+        @media screen and (min-width: 768px) {
+          margin-right: 65px;
+        }
+        @media screen and (min-width: 992px) {
+          margin-right: 17%;
+        }
+
+        @media screen and (min-width: 1200px) {
+          margin-right: 18.8%;
+        }
+
+      }
+
+      .header__nav {
+
+        .header__nav-menu {
+          margin-left: 0;
+
+          .header__nav-menu--item {
+
+            @media screen and (min-width: 768px) {
+              padding: 0 16px;
+
+              &:first-child {
+                padding: 0 16px 0 0;
+              }
+
+            }
+            @media screen and (min-width: 992px) {
+              padding: 0 30px;
+
+              &:first-child {
+                padding: 0 30px 0 0;
+              }
+
+            }
+
+            .header__nav-menu--item-link {
+              @media screen and (min-width: 768px) {
+                font-size: 14px;
+              }
+
+              @media screen and (min-width: 1200px) {
+                font-size: 20px;
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+.navbar-header {
+  margin-bottom: 10px;
+}
+
+

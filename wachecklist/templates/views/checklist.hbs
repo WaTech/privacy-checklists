@@ -1,0 +1,272 @@
+<div id="dataMinimization" class="checklist-page-container">
+
+    <div class="hero hero-checklist">
+        <header class="header">
+            <div class="container header-container">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid container-header-new">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar icon-bar-1"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+                                <img src='/images/logo-header.png' alt=""/>
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <nav class="header__nav">
+                                <ul role="menu" class="header__nav-menu">
+                                    {{# each navLinks}}
+                                        <li role="menuitem" class="header__nav-menu--item">
+                                            <a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+                                                {{ label }}
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="container container-checklist">
+        <div class="container-checklist__nav">
+            {{#if data.post.items }}
+                <h3 class="container-checklist__nav-title">
+                    Table of contents:
+                </h3>
+                <ul class="container-checklist__nav-list">
+                    {{#each data.post.items }}
+                        <li class="container-checklist__nav-list-item">
+                            <a href="#{{_id}}" class="container-checklist__nav-list-item-link">
+                                {{heading}}
+                            </a>
+                        </li>
+                    {{/each}}
+                    <li class="container-checklist__nav-list-item">
+                        <button type="submit" class="container-checklist__link-download js-checklist-download">
+                            Download Checklist
+                        </button>
+						<div class="loader">
+							<span></span>
+						</div>
+                    </li>
+                </ul>
+            {{/if}}
+
+            {{#if data.post.resources }}
+                <h4 class="container-checklist__text">
+                    Resources:
+                </h4>
+                <ul class="list-resources">
+                    {{#each data.post.resources}}
+                        <li class="list-resources__item">
+                            <a class="list-resources__item--resources" href="{{url}}">
+                                {{title}}
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+
+            {{#if data.post.resource.title }}
+                <h4 class="container-checklist__text">
+                    Resource Url:
+                </h4>
+                <ul class="list-resources">
+                    <li class="list-resources__item">
+                        <a class="list-resources__item--resources" href="{{data.post.resource.url}}" target="_blank">
+                            {{data.post.resource.title}}
+                        </a>
+                    </li>
+                </ul>
+            {{/if}}
+
+        </div>
+
+        <!-- Extend section sharing-container -->
+        {{> sharing-container }}
+
+        <article class="container-checklist__article">
+            <a class="container-checklist__article--link" href="/checklists">
+                back to checklists
+            </a>
+			<h1>{{ data.post.title }}</h1>
+            <div class="container-checklist__article-post">
+                {{{data.post.content.extended}}}
+            </div>
+            <div class="checklists__entry-container-checkbox">
+				<form id="checklist-form" data-post-id="{{data.post._id}}">
+					<ul class="checklists__entry-container-checkbox-list">
+						{{#each data.post.items}}
+						<li id="{{_id}}" class="checklists__entry-container-checkbox-list-item">
+							<h3 class="checklists__entry-container-checkbox-list-item--title">
+								{{ title }}
+							</h3>
+							{{#if content}}
+								<div class="checklists__entry-container-checkbox-content">
+									{{{ content }}}
+								</div>
+							{{/if}}
+							<div class="container-checkbox">
+							{{#each items}}
+								{{#notEmpty this}}
+									<input id="{{../_id}}_{{@key}}" data-key="{{@key}}" class="container-checkbox--input" type="checkbox">
+									<label for="{{../_id}}_{{@key}}" class="container-checkbox--label">
+											{{{this}}}
+									</label>
+								{{/notEmpty}}
+							{{/each}}
+							</div>
+						</li>	
+						{{/each}}
+					</ul>
+				</form>
+
+                {{#if data.post.items }}
+                    <div class="checklists__entry-container-checkbox-tags">
+                        <h4 class="checklists__entry-container-checkbox-tags--title">
+                            Tags:
+                        </h4>
+                        <ul class="list-tags">
+                            {{#each data.post.tags}}
+                                <li class="list-tags-item">
+                                    <a class="list-tags-item__link" href="/checklists/tags/{{key}}">
+                                        {{ name }}
+                                    </a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/if}}
+
+            </div>
+
+            {{#if data.post.items }}
+                <div class="checklists__entry-container-article">
+                    <a class="checklists__entry-container-article--link" href="/checklists">
+                        back to checklists
+                    </a>
+                    <button type="submit" class="container-checklist__link-download js-checklist-download">
+                        Download Checklist
+                    </button>
+					<div class="loader">
+						<span></span>
+					</div>
+                </div>
+            {{/if}}
+
+        </article>
+    </div>
+    {{#if data.post.related.posts }}
+        <div class="posts-wrapper">
+            <div class='container posts-container'>
+                <div class="post__header">
+                    <h3 class="post__header--title">
+                        Related posts
+                    </h3>
+                    <a href="/blog" class="post__header--link-all">
+                        Go to all posts
+                    </a>
+                </div>
+                <div class="post__footer">
+                    <ul class="posts__footer--list">
+                        {{# each data.post.related.posts }}
+                            <li class="posts__footer--list-item">
+                                <div class="posts__entry-container--image">
+                                    {{#if image.url}} 
+										<img class="posts__image" src="{{image.url}}" alt="{{title}}" /> 
+									{{else}}
+										<img class="posts__image" src="../images/300x200.png" alt="{{title}}" />
+									{{/if}}
+                                </div>
+                                <div class="posts__entry-container--text">
+                                    <h3 class="posts__title">
+                                        {{{ title }}}
+                                    </h3>
+                                    <span class="posts__item--filed-under">
+                                		Filed under: {{{ categoryList categories }}}
+                            		</span>
+									<p>{{ content.brief }}</p>
+                                <div class="posts__item--entry-container">
+                                    <a href="{{ postUrl slug }}" class="posts__item--entry-container-link">
+                                        Learn more
+                                    </a>
+                                    <span class="posts__item--entry-container-icon">
+                                    <img class="posts__item--entry-container-icon-img" src='/images/post-icon.png' alt="" />
+                                    <span class="posts__date">
+                                        {{ date }}
+                                    </span>
+                                </span>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <a href="/blog" class="post__header--link-all-mobile">
+                    Go to all posts
+                </a>
+            </div>
+        </div>
+    {{/if}}
+    {{#if data.post.related.checklists }}
+        <div class="related-checklists-wrapper">
+            <div class='container related-checklists-container'>
+                <div class="related-checklists__header">
+                    <h3 class="related-checklists__header--title">
+                        Related Checklists
+                    </h3>
+                    <a href="/checklists" class="related-checklists__header--link-all">
+                        Go to all checklists
+                    </a>
+                </div>
+                <div class="checklists-wrapper checklists-page">
+                    <div class='checklists-container'>
+                        <ul class="checklists">
+                            {{# each data.post.related.checklists }}
+                                <li id="{{_id}}" class="checklists__item">
+                                    <h3 class="checklists__item--title">
+                                        {{{ title }}}
+                                    </h3>
+                                    <span class="checklists__item--filed-under">
+                                    	Tag: <a class="list-tags-item__link" href="/checklists/tags/{{tags.[0].key}}">
+										{{ tags.[0].name }}
+									</a>
+                                	</span>
+									<p>{{ content.brief }}</p>
+                                    <div class="checklists__item--entry-container">
+                                        <a href="{{ checklistUrl slug }}" class="checklists__item--entry-container-link">
+                                            start checklist
+                                        </a>
+                                        <a href="{{ checklistUrl slug }}" title="start checklist" class="checklists__item--entry-container-icon"></a>
+                                    </div>
+                                </li>
+                            {{/each}}
+							
+                        </ul>
+                    </div>
+                    <a href="/checklists" class="post__header--link-all-mobile">
+                        Go to all checklists
+                    </a>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</div>
+<div class="privacy-modeling-wrapper">
+    <div class='container privacy-modeling-container'>
+        <p class='privacy-modeling__text'>
+            The Office of Privacy and Data Protection announces beta testing of “Privacy Modeling,” a new web application that identifies the privacy laws relevant to the product or service you wish to create.
+        </p>
+        <a href="#" class='privacy-modeling__link'>
+            Go to Privacy Modelling App
+        </a>
+    </div>
+</div>

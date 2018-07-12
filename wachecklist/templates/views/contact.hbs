@@ -1,0 +1,109 @@
+{{!< default }}
+
+<div class="what-we-do-page-container">
+
+    <div class="hero">
+        <header class="header">
+            <div class="container header-container">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid container-header-new">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar icon-bar-1"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+                                <img src='/images/logo-header.png' alt=""/>
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <nav class="header__nav">
+                                <ul role="menu" class="header__nav-menu">
+                                    {{# each navLinks}}
+                                        <li role="menuitem" class="header__nav-menu--item">
+                                            <a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+                                                {{ label }}
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="hero-wrapper">
+            <div class="container hero-container">
+                <div class="hero__left-content">
+                    <h2 class="hero__title">
+                        {{ page.pageTitle }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container what-we-do__entry-container">
+        <div class="what-we-do__entry-container--content">
+            {{{ page.content }}}
+        </div>
+    </div>
+    <div class="what-we-do__entry-container--form">
+        <div class="what-we-do__entry-container--contact-info">
+            <div class="container-fluid">
+                <h2 class="what-we-do__entry-container--contact-info-title">
+                    Please use the form to send us your feedback or ask a privacy question.
+                </h2>
+                <p class="what-we-do__entry-container--contact-info-text">
+                    If you work for a state agency, you can also contact us through our SharePoint page on the state network.
+                    We endeavor to respond within a few days if you provide contact info.
+                </p>
+                <div class="what-we-do__entry-container">
+                    <div class="what-we-do__entry-container--box">
+                        <div class="what-we-do__entry-container--box-image">
+                            <img src="../images/what-we-do__img-1.png" alt="Chief Privacy Officer">
+                        </div>
+                        <p class="what-we-do__entry-container--box-name">
+                            Alex Alben
+                        </p>
+                        <p class="what-we-do__entry-container--box-position">
+                            Chief Privacy Officer
+                        </p>
+                    </div>
+                    <div class="what-we-do__entry-container--box">
+                        <div class="what-we-do__entry-container--box-image">
+                            <img src="../images/what-we-do__img-2.png" alt="Open Data Guy">
+                        </div>
+                        <p class="what-we-do__entry-container--box-name">
+                            Will Saunders
+                        </p>
+                        <p class="what-we-do__entry-container--box-position">
+                            Open Data Guy
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="what-we-do__form">
+            <div class="container-fluid">
+                <h3 class="what-we-do__form-title">
+                    Have questions?
+                    Contact us now.
+                </h3>
+                <a class="contact-us-link" href="https://privacy.wa.gov/privacy-checklist-contact" target="_blank">
+                    Contact us
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Extend section -->
+            {{#if page.sections.[0] }}
+                {{> section page.sections.[0] }}
+            {{/if}}
+        </div>
+    </div>
+</div>

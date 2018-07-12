@@ -1,0 +1,41 @@
+{{#if data.post.related.checklists }}
+    <div class="related-checklists-wrapper">
+        <div class='container related-checklists-container'>
+            <div class="related-checklists__header">
+                <h3 class="related-checklists__header--title">
+                    Related Checklists
+                </h3>
+                <a href="/checklists" class="related-checklists__header--link-all">
+                    Go to all checklists
+                </a>
+            </div>
+            <div class="checklists-wrapper checklists-page">
+                <div class='checklists-container'>
+                    <ul class="checklists">
+                        {{# each data.post.related.checklists }}
+                            <li id="{{ _id }}" class="checklists__item">
+                                <h3 class="checklists__item--title">
+                                    {{{ title }}}
+                                </h3>
+								{{#if tags.[0]}}
+									<span class="checklists__item--filed-under">
+                                		Tag: <a class="list-tags-item__link" href="/checklists/tags/{{tags.[0].key}}">
+											{{ tags.[0].name }}
+										</a>
+                            		</span>
+								{{/if}}
+                                <p>{{ content.brief }}</p>
+                                <div class="checklists__item--entry-container">
+                                    <a href="{{ checklistUrl slug }}" class="checklists__item--entry-container-link">
+                                        start checklist
+                                    </a>
+                                    <a href="{{ checklistUrl slug }}" title="start checklist" class="checklists__item--entry-container-icon"></a>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}

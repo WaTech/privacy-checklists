@@ -1,0 +1,150 @@
+{{!< default }}
+
+<div class="search-page-container">
+    <div class="hero hero-search">
+        <header class="header">
+            <div class="container header-container">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid container-header-new">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar icon-bar-1"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+                                <img src='/images/logo-header.png' alt=""/>
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <nav class="header__nav">
+                                <ul role="menu" class="header__nav-menu">
+                                    {{# each navLinks}}
+                                        <li role="menuitem" class="header__nav-menu--item">
+                                            <a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+                                                {{ label }}
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="hero-wrapper">
+            <div class="container hero-container">
+                <div class="hero__left-content">
+                    <h2 class="hero__title">
+                        Search Results
+                        <span class="hero__result">
+                            Showing {{ data.total }} results for: <span class="results-state">{{data.query}}</span>
+                        </span>
+                    </h2>
+
+                    <form action="/search" class="hero__form-search">
+                        <input id="q" class="hero__form-input" type="search" name="q" autocomplete="off" placeholder="Search titles or categories" required aria-label="Search">
+                        <button class="hero__form-btn">
+                            SEARCH
+                        </button>
+                        <div class="search__results">
+                            <ul class="search__results--list autocomplete-items" tabindex="0"></ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-wrapper search-page">
+        <div class="checklists-wrapper checklists-page">
+        <div class='container checklists-container'>
+            {{#if data.checklists }}
+                <h2 class="container-search__title">
+                    Checklists
+                </h2>
+                <ul class="checklists">
+                {{# each data.checklists }}
+                    <li id="{{ _id }}" class="checklists__item">
+                        <h3 class="checklists__item--title">
+                            {{{ title }}}
+                        </h3>
+						{{#if tags.[0]}}
+							<span class="checklists__item--filed-under">
+                                Tag: <a class="list-tags-item__link" href="/checklists/tags/{{tags.[0].key}}">{{ tags.[0].name }}</a>
+							</span>
+						{{/if}}
+						<p>{{ content.brief }}</p>
+                        <div class="checklists__item--entry-container">
+                            <a href="{{ checklistUrl slug }}" class="checklists__item--entry-container-link">
+                                start checklist
+                            </a>
+                            <a href="{{ checklistUrl slug }}" title="start checklist" class="checklists__item--entry-container-icon"></a>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+        </div>
+        <div class="posts-wrapper">
+            {{#if data.posts }}
+                <div class='container posts-container'>
+                    <h2 class="container-search__title">
+                        Blog
+                    </h2>
+                    <div class="post__footer">
+                        <ul class="posts__footer--list">
+                            {{# each data.posts }}
+                                <li class="posts__footer--list-item">
+                                    <div class="posts__entry-container--image">
+                                        {{#if image.url}}
+											<img class="posts__image" src="{{image.url}}" alt="{{title}}"/>
+										{{else}}
+                                            <img class="posts__image" src="../images/300x200.png" alt="{{title}}"/>
+										{{/if}}
+                                    </div>
+                                    <div class="posts__entry-container--text">
+                                        <h3 class="posts__title">
+                                            {{{ title }}}
+                                        </h3>
+                                        <span class="posts__item--filed-under">
+                                        	Filed under: {{{ categoryList categories }}}
+                                    	</span>
+										<p>{{ content.brief }}</p>
+                                        <div class="posts__item--entry-container">
+                                            <a href="{{ postUrl slug }}" class="posts__item--entry-container-link">
+                                                Learn more
+                                            </a>
+                                            <span class="posts__item--entry-container-icon">
+                                            <img class="posts__item--entry-container-icon-img" src='/images/post-icon.png' alt=""/>
+                                                <span class="posts__date">
+                                                    {{ date format="MMMM DD, YYYY" }}
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    {{#if page.sections.[0] }}
+        {{> section page.sections.[0] }}
+    {{/if}}
+</div>
+
+
+<div class="search-overlay">
+	<div class="search-overlay__container">
+		<div class="typing-indicator" aria-busy='true' aria-label='Loading' role='progressbar'>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</div>

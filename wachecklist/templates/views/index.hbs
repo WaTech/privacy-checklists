@@ -1,0 +1,146 @@
+{{!< default}}
+
+
+<div class="hero hero-home">
+    <header class="header">
+        <div class="container header-container">
+            <div class="navbar navbar-default">
+                <div class="container-fluid container-header-new">
+                    <div class="navbar-header">
+                        <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar icon-bar-1"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+                            <img src='/images/logo-header.png' alt=""/>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <nav class="header__nav">
+                            <ul role="menu" class="header__nav-menu">
+                                {{# each navLinks}}
+                                    <li role="menuitem" class="header__nav-menu--item">
+                                        <a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+                                            {{ label }}
+                                        </a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="hero-wrapper">
+        <div class="container hero-container">
+            <div class="hero__left-content">
+                <h2 class="hero__title">
+                    {{ page.pageTitle }}
+                </h2>
+
+                <!-- Extend section search -->
+                {{> search }}
+            </div>
+			<div class="hero__right-content">
+				{{>quotes}}
+			</div>
+        </div>
+    </div>
+
+    <div class="checklists-wrapper ">
+        <div class='container checklists-container'>
+            <ul class="checklists">
+                {{# each data.checklists.results }}
+                <li id="{{ id }}" class="checklists__item">
+                    <h3 class="checklists__item--title">
+                        {{{ title }}}
+                    </h3>
+					{{#if tags.[0]}}
+						<span class="checklists__item--filed-under">
+                        Tag: <a class="list-tags-item__link" href="/checklists/tags/{{tags.[0].key}}">
+							{{ tags.[0].name }}
+							</a>
+                    	</span>
+					{{/if}}
+
+					<p>{{ content.brief }}</p>
+
+                    <div class="checklists__item--entry-container">
+                        <a href="{{ checklistUrl slug }}" class="checklists__item--entry-container-link">
+                            start checklist
+                        </a>
+                        <a href="{{ checklistUrl slug }}" title="start checklist" class="checklists__item--entry-container-icon"></a>
+                    </div>
+                </li>
+                {{/each}}
+
+                {{#ifgt data.checklists.total 9 }}
+                    <li class="checklists__link--entry-container">
+                        <a href="/checklists" class="checklists__link--link-more">
+                            Open more checklists
+                        </a>
+                    </li>
+                {{else}}
+                    <li class="checklists__link--entry-container">
+                        <a href="/checklists" class="checklists__link--link-more">
+                            Open all checklists
+                        </a>
+                    </li>
+                {{/ifgt}}
+
+            </ul>
+
+        </div>
+    </div>
+</div>
+{{#if page.sections.[1] }}
+    <div class="privacy-data-wrapper">
+        <div class='container privacy-data-container'>
+            <div class="privacy-data__entry-container-text">
+                <h3 class='privacy-data__entry-container-text--title'>
+                    {{ page.sections.[1].title }}
+                </h3>
+                <p class='privacy-data__entry-container-text--description'>
+                    Since our inception at the beginning of 2016, the Office of Privacy and Data Protection has been chartered as the focal point for privacy efforts in Washington state.
+                </p>
+                <div class="privacy-data__entry-container-video">
+                    <a href="{{ page.sections.[1].button.url }}" class='privacy-data__entry-container-text--link'>
+                        {{ page.sections.[1].button.text }}
+                    </a>
+					{{#if page.sections.[2]}}
+						<a href="{{ page.sections.[2].button.url }}" class="privacy-data__entry-container-text--link" target="_blank">
+							{{ page.sections.[2].button.text }}
+						</a>
+					{{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+<!-- Extend section latest-post -->
+{{> latest-post }}
+
+<!-- Extend section privacy-modeling -->
+{{#if page.sections.[0] }}
+    {{> section page.sections.[0] }}
+{{/if}}
+
+<div class='testimonials-wrapper'>
+	{{# each data.testimonials.results }}
+		<div class="container testimonials-container">
+			<div class='testimonials__entry-container--image'>
+				<img class='testimonials__image' src="{{ image.url }}" alt="Testimonials image" />
+			</div>
+			<div class='testimonials__entry-container--text'>
+				{{{ content }}}
+				<p class='testimonials__author'>
+					{{ authorName }}, <span class="testimonials__position">{{ position }}</span>
+				</p>
+			</div>
+		</div>
+	{{/each}}
+</div>

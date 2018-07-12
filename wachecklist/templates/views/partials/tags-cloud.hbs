@@ -1,0 +1,30 @@
+<div class="tags-container">
+	{{#if tag}}
+		{{#ifeq tag 'all'}}
+			<a href="#" class="tags-all js-tags-all">
+				All Popular Checklists
+			</a>
+		{{else}}
+			<a href="#" class="tags-all js-tags-all">
+				{{{getTagName data.tagsList tag}}}
+			</a>
+		{{/ifeq}}
+	{{else}}
+		<a href="#" class="tags-all js-tags-all">
+			All Popular Checklists
+		</a>
+	{{/if}}
+	<p class="tags-list__title">Popular Checklists:</p>
+	<div class="tags-list">
+		{{#each data.tagsList}}
+			<a
+				{{#ifeq ../tag key}}
+					href="/checklists"
+			   		class="tags-list__link active"
+				{{else}}
+					href="/checklists/tags/{{key}}"
+			   		class="tags-list__link"
+				{{/ifeq}}>{{name}}</a>
+		{{/each}}
+	</div>
+</div>

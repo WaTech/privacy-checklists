@@ -1,0 +1,131 @@
+/* Tags Cloud */
+.tags {
+  &-container {
+	position: relative;
+	margin-top: 20px;
+	padding-top: 15px;
+	font: 500 18px 'Roboto', sans-serif;
+	color: #fff;
+	background-color: transparent;
+
+	&.open {
+	  border-radius: 4px;
+	  color: #4a4a4a;
+	  background-color: #fff;
+
+	  @media (min-width: 768px) {
+		color: #fff;
+		background-color: transparent;
+	  }
+
+	  .tags-all {
+		border-color: #cddcf3;
+		color: inherit;
+
+		&:after {
+		  margin-top: 8px;
+		  border-color: #4a4a4a;
+		  transform: rotate(225deg);
+		}
+	  }
+
+	  .tags-list {
+		display: block;
+	  }
+	}
+  }
+
+  &-all {
+	display: block;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #fff;
+	padding: 0 10px 15px;
+	color: inherit;
+	@media (min-width: 768px) {
+	  display: none;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+	  color: #fff;
+	  text-decoration: none;
+	}
+
+	&:after {
+	  content: "";
+	  display: inline-block;
+	  float: right;
+	  margin-top: 2px;
+	  border: solid #fff;
+	  border-width: 0 2px 2px 0;
+	  padding: 5px;
+	  transform: rotate(45deg);
+	}
+  }
+
+  &-list {
+	display: none;
+	padding-bottom: 5px;
+	@media (min-width: 768px) {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  margin: 0 auto;
+	  max-width: 100%;
+	  padding-bottom: 0;
+	}
+
+	@media (min-width: 992px) {
+	  max-width: 80%;
+	}
+
+	&__title {
+	  display: none;
+	  font-size: 22px;
+	  @media (min-width: 768px) {
+		display: block;
+		text-align: center;
+	  }
+	}
+
+	&__link {
+	  display: block;
+	  border-bottom: 1px solid transparent;
+	  padding: 10px;
+	  font-style: italic;
+	  font-weight: 400;
+	  font-size: 16px;
+	  color: inherit;
+	  text-decoration: none;
+	  opacity: .8;
+	  transition: all .2s;
+
+	  @media (min-width: 768px) {
+		display: inline-block;
+		margin: 0 12px;
+		padding: 2px 0;
+	  }
+
+	  &:hover {
+		border-bottom-color: #fff;
+		color: inherit;
+		opacity: 1;
+		text-decoration: none;
+
+		@media (max-width: 767px) {
+		  color: #5fb100;
+		}
+	  }
+	  
+	  &.active {
+		font-weight: 500;
+		opacity: 1;
+		
+		&:after {
+		  content: " (x)";
+		}
+	  }
+	}
+  }
+}

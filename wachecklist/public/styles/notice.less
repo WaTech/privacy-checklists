@@ -1,0 +1,27 @@
+.error-container {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.error-notice {
+  margin: 0 auto;
+  border-radius: 4px;
+  max-width: 300px;
+  padding: 20px;
+  font-weight: 600;
+  color: #dc143c;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+  
+  @media (min-width: 375px) {
+	max-width: 355px;
+  }
+  
+  p {
+	margin-bottom: 0;
+  }
+}

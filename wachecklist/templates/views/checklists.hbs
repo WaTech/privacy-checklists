@@ -1,0 +1,106 @@
+{{!< default}}
+
+<div class="checklists-page-container">
+
+    <div class="hero hero-checklists">
+        <header class="header">
+            <div class="container header-container">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid container-header-new">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar icon-bar-1"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+                                <img src='/images/logo-header.png' alt=""/>
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <nav class="header__nav">
+                                <ul role="menu" class="header__nav-menu">
+                                    {{# each navLinks}}
+                                        <li role="menuitem" class="header__nav-menu--item">
+                                            <a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+                                                {{ label }}
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="hero-wrapper">
+            <div class="container hero-container">
+                <div class="hero__left-content">
+                    <h2 class="hero__title">
+						{{ page.pageTitle }}
+                    </h2>
+
+                    <!-- Extend section search -->
+                    {{> search }}
+
+                </div>
+				<div class="hero__right-content">
+					{{>quotes}}
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checklists-wrapper checklists-page">
+        <div class='container checklists-container'>
+            <div class="checklists__entry-container">
+                <div class="checklists__entry-container-variants">
+					<button type="button" class="checklists__entry-container-variants--link block btn-block">
+					</button>
+					<button type="button" class="checklists__entry-container-variants--link list btn-list">
+					</button>
+                </div>
+            </div>
+            <ul class="checklists variants-list">
+                {{# each data.posts }}
+                    <li id="{{ id }}" class="checklists__item checklists__item-list">
+                        <h3 class="checklists__item--title">
+                            {{{ title }}}
+                        </h3>
+						{{#if tags.[0]}}
+							<span class="checklists__item--filed-under">
+                        	Tag: <a class="list-tags-item__link" href="/checklists/tags/{{tags.[0].key}}">
+								{{ tags.[0].name }}
+								</a>
+                    		</span>
+						{{/if}}
+						<p>{{ content.brief }}</p>
+                        <div class="checklists__item--entry-container">
+                            <a href="{{ checklistUrl slug }}" class="checklists__item--entry-container-link">
+                                start checklist
+                            </a>
+                            <a href="{{ checklistUrl slug }}" title="start checklist" class="checklists__item--entry-container-icon"></a>
+                        </div>
+                    </li>
+                {{/each}}
+
+                {{#ifgt data.posts.length 7 }}
+                    <li class="checklists__link--entry-container">
+                        <a href="#" class="checklists__link--link-more--open">
+                            Open {{ data.posts.total }} more checklists
+                        </a>
+                    </li>
+                {{/ifgt}}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Extend section -->
+    {{#if page.sections.[0] }}
+        {{> section page.sections.[0] }}
+    {{/if}}
+
+</div>
+

@@ -1,0 +1,13 @@
+<div class="quotes-container">
+	<a class="quotes__link" 
+	   {{#if data.quotes.targetLink}}
+		href="{{data.quotes.targetLink}}"
+	   {{else}}
+		href="/checklists/checklist/{{data.quotes.targetChecklist.slug}}"
+	   {{/if}}
+	>
+		<p class="quotes__quote-text">
+			<span class="quotes__quote">&ldquo;</span>{{data.quotes.quote}}<span class="quotes__quote">&rdquo;</span>&mdash;<span class="quotes__author">{{data.quotes.author}}</span>
+		</p>
+	</a>
+</div>

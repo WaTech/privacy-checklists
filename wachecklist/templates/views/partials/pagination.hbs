@@ -1,0 +1,11 @@
+<nav aria-label="Page navigation" class="pagination-container">
+    <ul class="pagination justify-content-center">
+        <li {{#unless data.posts.previous}}class="pagination-hidden"{{/unless}}>
+            <a class="page-link" href="{{paginationPreviousUrl data.posts.previous}}" tabindex="-1">Previous page</a>
+        </li>
+        {{{paginationNavigation data.posts.pages data.posts.currentPage data.posts.totalPages}}}
+        <li {{#unless data.posts.next }}class="pagination-hidden"{{/unless}}>
+            <a class="page-link" href="{{paginationNextUrl data.posts.next data.posts.totalPages}}">Next page</a>
+        </li>
+    </ul>
+</nav>

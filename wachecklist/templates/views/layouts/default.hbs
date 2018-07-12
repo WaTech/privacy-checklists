@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Office of Privacy & Data Protection</title>
+    <link href="/styles/site.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="/fonts/fonts.css" rel="stylesheet">
+
+    <meta property="og:description" content="{{ data.post.content.brief }}">
+    <meta property="og:image" content="{{ data.post.image.url }}">
+    <meta property="og:site_name" content="Office of Privacy">
+
+    {{!-- This file provides the default styling for the KeystoneJS Content Editor
+        - only renders when user is logged in and admin--}}
+    {{{isAdminEditorCSS user}}}
+
+    {{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    //- Safely remove this block if you are not targeting IE8 --}}
+    <!--[if lt IE 9]>
+    <script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+    <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <div class="wrapper-index">
+        <main id="body">
+
+			<!--
+                Flash messages allow you to display once-off status messages to users, e.g. form
+                validation errors, success messages, etc
+            -->
+            {{#if messages}}
+                <div id="flash-messages" class="container">
+                    {{#if messages.info}}
+                        <div class="alert alert-info">
+                            {{{flashMessages messages.info}}}
+                        </div>
+                    {{/if}}
+                    {{#if messages.success}}
+                        <div class="alert alert-success">
+                            {{{flashMessages messages.success}}}
+                        </div>
+                    {{/if}}
+                    {{#if messages.warning}}
+                        <div class="alert alert-warning">
+                            {{{flashMessages messages.warning}}}
+                        </div>
+                    {{/if}}
+                    {{#if messages.error}}
+                        <div class="alert alert-danger">
+                            {{{flashMessages messages.error}}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+            <!-- The content block should contain the body of your template's content-->
+            {{{body}}}
+        </main>
+        <footer class="footer">
+			<div class="container footer-container">
+                <div class='footer__entry-container-logo'>
+                    <a href="https://privacy.wa.gov/" target="_blank" class="footer__logo-link">
+                        <img class="footer__logo-link-img" src='/images/logo-footer.png' alt=""/>
+                    </a>
+                    <p role="contentinfo" class="footer__copyright">
+                        &copy; 2018 Privacy. All rights reserved
+                    </p>
+                </div>
+                <nav class="footer__nav">
+                    <ul role="menu" class="footer__nav-menu">
+                        {{# each navLinksSecondary }}
+                            <li role="menuitem" class="footer__nav-menu--item">
+                                <a href="{{ href }}" {{#ifeq ../section key}} class="footer__nav-menu--item-link active" {{else}} class="footer__nav-menu--item-link" {{/ifeq}}>
+                                    {{ label }}
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </nav>
+                <div role="contentinfo" class='footer__entry-container-text'>
+                    <p class='footer__text'>
+                        <a href="/disclaimer" 
+						   {{#ifeq section 'disclaimer'}}
+						   		class="footer__text--link active"
+						   {{else}}
+						   		class="footer__text--link"
+						   {{/ifeq}}>
+                            Disclaimer
+                        </a>
+                    </p>
+                    <p class='footer__text'>
+                        Compilance with PRA
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+	<div class="error-container">
+		<div class="error-notice">
+			<p>Something went wrong. Please try again.</p>
+		</div>
+	</div>
+{{!--
+    //- jQuery 1.11.3 is included by default, and required by both Bootstrap
+    //- and the KeystoneJS Content Editor. If you are not targeting IE8,
+    //- you can upgrade to 2.1.4 (also bundled) for better performance.
+--}}
+<script src="/js/jquery/jquery-1.11.3.min.js"></script>
+{{!--
+    //- Customise which Bootstrap javascript files are served by including
+    //- them specifically here, instead of bootstrap-3.3.5.min.js
+--}}
+<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+<script src="/js/main.js"></script>
+{{{isAdminEditorJS user}}}
+</body>
+</html>

@@ -1,0 +1,217 @@
+.what-we-do-page-container {
+
+  .hero {
+
+    .hero-wrapper {
+
+      .hero-container {
+
+        .hero__left-content {
+
+          .hero__title {
+            margin: 70px 0 29px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+  .what-we-do__entry-container {
+
+    .what-we-do__entry-container--content {
+      padding: 50px 0;
+
+      @media screen and (min-width: 990px) {
+        padding: 70px 0 70px 200px;
+      }
+
+      h3 {
+        margin: 0 0 20px;
+        font-family: 'Nunito',sans-serif;
+      }
+
+      h4 {
+        em {
+          color: rgb(237, 125, 49);
+          .font(400; 20px; 30px; @font-nunito-base);
+        }
+
+      }
+
+      ul {
+        padding: 0 24px;
+        .font(400; 18px; 22px; @font-nunito-base);
+        margin: 0 0 20px;
+        max-width: 600px;
+
+
+
+        li {
+          margin-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      h1 {
+        color: @textColorSignalBlack;
+        margin: 0 0 30px;
+        .font(700; 28px; 1; @font-nunito-base);
+        max-width: 678px;
+
+        @media screen and (min-width: 768px) {
+          .font(700; 36px; 1; @font-nunito-base);
+        }
+
+      }
+
+      p {
+        color: @textColorSignalBlack;
+        .font(400; 20px; 30px; @font-nunito-base);
+        max-width: 678px;
+        margin-bottom: 40px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        img {
+          max-width: 100%;
+          width: 100%;
+          height: auto;
+          vertical-align: middle;
+
+          @media screen and (min-width: 992px) {
+            margin: 0 0 0 -100px;
+            max-width: 776px;
+            width: 776px;
+          }
+
+        }
+
+      }
+
+      h6 {
+        color: @colorLightGray;
+        .font(400; 16px; 20px; @font-roboto-base);
+        margin: -28px 0 20px;
+        max-width: 332px;
+      }
+
+    }
+
+  }
+
+  .what-we-do__entry-container--form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    .what-we-do__entry-container--contact-info {
+      display: flex;
+      background: #f0f4f9;
+      padding: 50px 0;
+      max-width: 100%;
+      width: 100%;
+
+      @media screen and (min-width: 768px) {
+        max-width: 60%;
+      }
+
+      &-title {
+        color: @textColorSignalBlack;
+        .font(600; 28px; 32px; @font-nunito-base);
+        max-width: 700px;
+        margin: 0 0 20px;
+      }
+
+      &-text {
+        max-width: 700px;
+        margin: 0 0 60px;
+        padding: 0 15px 0 0;
+        color: @textColorSignalBlack;
+        .font(400; 20px; 30px; @font-nunito-base);
+      }
+
+      .what-we-do__entry-container {
+        display: flex;
+        justify-content: center;
+        max-width: 700px;
+
+        .what-we-do__entry-container--box {
+          width: 50%;
+
+          &-name {
+            color: @textColorSignalBlack;
+            .font(400; 20px; 30px; @font-nunito-base);
+            margin: 20px 0 0;
+          }
+
+          &-position {
+            color: @textColorSignalBlack;
+            .font(400; 16px; 1; @font-nunito-base);
+            margin: 0 0;
+          }
+
+        }
+
+      }
+
+    }
+
+    .what-we-do__form {
+      background: #f6f8fb;
+      padding: 50px 0;
+      max-width: 100%;
+      width: 100%;
+      align-items: center;
+      display: flex;
+      text-align: center;
+
+      @media screen and (min-width: 768px) {
+        max-width: 40%;
+        padding: 50px 0;
+        text-align: center;
+      }
+
+      .what-we-do__form-title {
+        color: @textColorSignalBlack;
+        .font(600; 28px; 32px; @font-nunito-base);
+        margin: 0 0 21px;
+      }
+
+      .contact-us-link {
+        color: #ffffff;
+        border-radius: 4px;
+        background: #78cc1c;
+        padding: 12px 32px;
+        border: 1px solid transparent;
+        transition: .4s;
+        margin-top: 12px;
+        .font(500; 16px; 1; @font-roboto-base);
+        text-decoration: none;
+        display: inline-block;
+
+        &:hover {
+          color: #78cc1c;
+          border: 1px solid #78cc1c;
+          background: none;
+        }
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,61 @@
+{{!< default }}
+
+<div class="what-we-do-page-container">
+
+	<div class="hero">
+		<header class="header">
+			<div class="container header-container">
+				<div class="navbar navbar-default">
+					<div class="container-fluid container-header-new">
+						<div class="navbar-header">
+							<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar icon-bar-1"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+								<img src='/images/logo-header.png' alt=""/>
+							</a>
+						</div>
+						<div class="collapse navbar-collapse">
+							<nav class="header__nav">
+								<ul role="menu" class="header__nav-menu">
+									{{# each navLinks}}
+										<li role="menuitem" class="header__nav-menu--item">
+											<a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+												{{ label }}
+											</a>
+										</li>
+									{{/each}}
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="hero-wrapper">
+			<div class="container hero-container">
+				<div class="hero__left-content">
+					<h2 class="hero__title">
+						{{ page.pageTitle }}
+					</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container what-we-do__entry-container">
+		<div class="what-we-do__entry-container--content">
+			{{{ page.content }}}
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Extend section -->
+			{{#if page.sections.[0] }}
+				{{> section page.sections.[0] }}
+			{{/if}}
+		</div>
+	</div>
+</div>

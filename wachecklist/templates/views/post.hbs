@@ -1,0 +1,80 @@
+
+<div class="post-page-container">
+    <div class="hero hero-post">
+        <header class="header">
+            <div class="container header-container">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid container-header-new">
+                        <div class="navbar-header">
+                            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar icon-bar-1"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://privacy.wa.gov/" target="_blank" class="navbar-brand header__logo">
+                                <img src='/images/logo-header.png' alt=""/>
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <nav class="header__nav">
+                                <ul role="menu" class="header__nav-menu">
+                                    {{# each navLinks}}
+                                        <li role="menuitem" class="header__nav-menu--item">
+                                            <a href="{{ href }}" {{#ifeq ../section key}} class="header__nav-menu--item-link active" {{else}} class="header__nav-menu--item-link" {{/ifeq}}>
+                                                {{ label }}
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="container container-post">
+        <!-- Extend section sharing-container -->
+        {{> sharing-container }}
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <article class="container-post__article">
+                <a class="container-post__article--link" href="/blog">
+                    back to blog
+                </a>
+                <header class="container-post__article-header">
+                    <h1 class="container-post__article-header-title" >
+                        {{data.post.title}}
+                    </h1>
+                    <h3 class="container-post__article-header-author">
+                        {{#if data.post.author.name.first }}
+                            {{data.post.author.name.first}} {{data.post.author.name.last}},
+                        {{/if}}
+                         {{date data.post.publishedDate format='MMMM DD, YYYY'}}
+                    </h3>
+                </header>
+                <div class="container-post__article-post">
+                    {{{data.post.content.extended}}}
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Extend section related-checklists -->
+    {{> related-checklists }}
+
+    <!-- Extend section related-posts -->
+    {{> related-posts }}
+	
+    <div class="privacy-modeling-wrapper">
+        <div class='container privacy-modeling-container'>
+            <p class='privacy-modeling__text'>
+                The Office of Privacy and Data Protection announces beta testing of “Privacy Modeling,” a new web application that identifies the privacy laws relevant to the product or service you wish to create.
+            </p>
+            <a href="#" class='privacy-modeling__link'>
+                Go to Privacy Modelling App
+            </a>
+        </div>
+    </div>
+</div>

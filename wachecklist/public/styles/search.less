@@ -1,0 +1,236 @@
+.search-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .hero-search {
+    margin-bottom: -30px;
+    background: url(../images/home-bg.png) no-repeat center / cover;
+  }
+
+  .hero__result {
+    color: #ffffff;
+    .font(400; 14px; 20px; @font-nunito-base);
+    display: block;
+	width: 100%;
+	max-width: 385px;
+	max-height: 83px;
+	overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+      .font(400; 20px; 30px; @font-nunito-base);
+      display: inline-block;
+	  max-height: 90px;
+	}
+
+    @media screen and (min-width: 990px) {
+      .font(400; 20px; 30px; @font-nunito-base);
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-left: 94px;
+      position: absolute;
+    }
+  }
+
+  .search-page {
+    background: #f0f4f9;
+    margin: 0 0;
+    padding-top: 70px;
+    -ms-flex: 1 0 0;
+    flex: 1 1 0;
+
+    .checklists-wrapper {
+      margin-top: 0;
+      padding-bottom: 0;
+
+      .checklists-container {
+
+        .container-search__title {
+          margin: 0 0 20px;
+          color: @textColorSignalBlack;
+          .font(700; 24px; 28px; @font-nunito-base);
+        }
+
+      }
+
+    }
+
+    .posts-wrapper {
+
+      .posts-container {
+        padding: 35px 15px 70px;
+
+        .container-search__title {
+          margin: 0 0 20px;
+          color: @textColorSignalBlack;
+          .font(700; 24px; 28px; @font-nunito-base);
+        }
+
+        .post__footer {
+
+          .posts__footer--list {
+
+            .posts__footer--list-item {
+              width: 100%;
+
+              @media screen and (min-width: 768px) {
+                width: 48%;
+              }
+
+              @media screen and (min-width: 1200px) {
+                width: 558px;
+              }
+
+              &:nth-child(2n+1) {
+                margin: 0 24px 24px 0;
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+.search__results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  z-index: 999;
+  border-radius: 4px;
+  width: 100%;
+
+  .search__results--list {
+    list-style-type: none;
+    margin: 0 0;
+    padding: 0 0;
+    box-shadow: 0 20px 30px -20px #3b75b0;
+    border-radius: 4px;
+    border: 1px solid #8fb1e9;
+    background-color: #fff;
+
+    .search__results--list-item {
+      padding: 10px 20px;
+	  cursor: pointer;
+
+	  &:hover {
+		color: #fff;
+		background-color: #216ce6;
+	  }
+	  
+      .search__results--list-item__title {
+        margin: 0;
+        .font(600; 15px; 24px; @font-nunito-base);
+
+        @media screen and (min-width: 500px) {
+          .font(600; 18px; 32px; @font-nunito-base);
+        }
+      }
+
+	  &.selected {
+		background-color: #216ce6;
+		.search__results--list-item__title {
+		  color: #fff;
+		}
+	  }
+    }
+
+  }
+
+}
+
+.search-overlay {
+  background-color: rgba(255, 255, 255, .75);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  
+  &__container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }
+}
+
+.scroll-animate {
+  overflow-y: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+@iteration: 3;
+
+.loop (@i) when (@i > 0) {
+  &:nth-of-type(@{i}) {
+	animation: 1s blink infinite @i * .3s;
+  }
+  .loop(@i - 1);
+}
+
+.typing-indicator {
+  background-color: #216ce6;
+  will-change: transform;
+  width: auto;
+  border-radius: 50px;
+  padding: 20px;
+  display: table;
+  margin: 0 auto;
+  position: relative;
+  animation: 2s bulge infinite ease-out;
+  &::before,
+  &::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: -2px;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background-color: #216ce6;
+  }
+  &::after {
+	height: 10px;
+	width: 10px;
+	left: -10px;
+	bottom: -10px;
+  }
+  span {
+	height: 15px;
+	width: 15px;
+	float: left;
+	margin: 0 1px;
+	background-color: #58fd42;
+	display: block;
+	border-radius: 50%;
+	opacity: .4;
+	.loop(@iteration);
+  }
+}
+
+@keyframes blink {
+  50% {
+	opacity: 1;
+  }
+}
+
+@keyframes bulge {
+  50% {
+	transform: scale(1.05);
+  }
+}

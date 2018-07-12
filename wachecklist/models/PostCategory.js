@@ -1,0 +1,29 @@
+const keystone = require('keystone');
+
+/**
+ * PostCategory Model
+ * ==================
+ */
+
+const PostCategory = new keystone.List('PostCategory', {
+	autokey: { from: 'name', path: 'key', unique: true },
+});
+
+PostCategory.add({
+	name: { type: String, required: true },
+});
+
+PostCategory.relationship({ ref: 'Post', path: 'posts', refPath: 'categories' });
+
+PostCategory.schema.static({
+	searchByName (query) {
+		return this.find({
+			name: {
+				$regex: query,
+				$options: 'gi',
+			},
+		});
+	},
+});
+
+PostCategory.register();

@@ -1,0 +1,52 @@
+<div class="posts-wrapper">
+    <div class='container posts-container'>
+        <div class="post__header">
+            <h3 class="post__header--title">
+                Related posts
+            </h3>
+            <a href="/blog" class="post__header--link-all">
+                Go to all posts
+            </a>
+        </div>
+        <div class="post__footer">
+            {{#if data.post.related.posts }}
+                <ul class="posts__footer--list">
+                    {{# each data.post.related.posts }}
+                        <li class="posts__footer--list-item">
+                            <div class="posts__entry-container--image">
+                                {{#if image.url}}
+									<img class="posts__image" src="{{image.url}}" alt="{{title}}" /> 
+								{{else}}
+									<img class="posts__image" src="../images/300x200.png" alt="{{title}}" />
+								{{/if}}
+                            </div>
+                            <div class="posts__entry-container--text">
+                                <h3 class="posts__title">
+                                    {{{ title }}}
+                                </h3>
+                                <span class="posts__item--filed-under">
+                                Filed under: {{{ categoryList categories }}}
+                            </span>
+                                <p>{{ content.brief }}</p>
+                                <div class="posts__item--entry-container">
+                                    <a href="{{ postUrl slug }}" class="posts__item--entry-container-link">
+                                        Learn more
+                                    </a>
+                                    <span class="posts__item--entry-container-icon">
+                                <img class="posts__item--entry-container-icon-img" src='/images/post-icon.png' alt="" />
+                                <span class="posts__date">
+                                    {{ date }}
+                                </span>
+                            </span>
+                                </div>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+            <a href="/blog" class="post__header--link-all-mobile">
+                Go to all posts
+            </a>
+        </div>
+    </div>
